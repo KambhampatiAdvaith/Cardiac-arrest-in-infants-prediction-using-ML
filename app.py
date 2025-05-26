@@ -177,8 +177,3 @@ if st.sidebar.button("Predict Infant Risk (Conceptual Prototype)"):
 st.sidebar.markdown("---")
 st.sidebar.markdown("IITK Internship Project: Conceptual Prototype")
 
-# --- To run this app ---
-# 1. Save this code as app.py
-# 2. Open your terminal/command prompt
-# 3. Navigate to the directory where app.py and your .pkl file are saved
-# 4. Run: streamlit run app.py
