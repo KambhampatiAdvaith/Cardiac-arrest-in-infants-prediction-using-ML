@@ -1,7 +1,7 @@
 # Cardiac-arrest-in-infants-prediction-using-ML
  Project Overview
 
-This project, undertaken as part of an internship at IIT Kanpur, focuses on developing a robust machine learning **methodology** for the early prediction of critical events using Electronic Health Records (EHR). The ultimate aim is to apply such a methodology to the challenging problem of **early prediction of pediatric cardiac arrest in infants.**
+This project, undertaken as part of an internship at IIIT Kottayam, focuses on developing a robust machine learning **methodology** for the early prediction of critical events using Electronic Health Records (EHR). The ultimate aim is to apply such a methodology to the challenging problem of **early prediction of pediatric cardiac arrest in infants.**
 
 Due to the significant challenges in accessing specific, de-identified infant cardiac arrest EHR data, this initial phase concentrates on building and validating a comprehensive ML pipeline using a publicly available **adult cardiac patient dataset (`CardiacPatientData.csv`) as a proxy.** The insights and techniques developed here are intended to serve as a foundational blueprint for future application to infant-specific data.
 
