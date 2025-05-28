@@ -153,9 +153,12 @@ if st.sidebar.button("Predict Infant Risk (Conceptual Prototype)"):
 
             # Interpret adult model's Class 1 as "Higher Conceptual Risk" for the infant prototype
             if outcome_from_adult_model == 1:
-                st.error(f"Conceptual Risk Category: Higher Risk")
+                st.error("Conceptual Risk Category: Higher Risk")
             else:
-                st.success(f"Conceptual Risk Category: Lower Risk")
+                st.success("Conceptual Risk Category: Lower Risk")
+
+            st.markdown(f"**Estimated Probability of High Risk (Class 1):** `{prob_class1_adult_model:.2%}`")
+
 
             st.write(f"Conceptual Risk Score (Derived from Adult Proxy Model): {prob_class1_adult_model:.4f}")
             st.progress(prob_class1_adult_model)
