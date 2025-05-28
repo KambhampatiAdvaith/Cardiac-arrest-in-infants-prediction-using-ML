@@ -1,8 +1,7 @@
-# app.py (REVISED FOR MORE "INFANT-FOCUSED" UI PROTOTYPE)
-
 import streamlit as st
 import pandas as pd
 import numpy as np
+import joblib
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -42,10 +41,6 @@ st.error( # Using st.error for maximum visibility of the disclaimer
 
     *   **THIS IS A CONCEPTUAL PROTOTYPE FOR ILLUSTRATIVE PURPOSES ONLY.**
     *   The underlying predictive model was **TRAINED EXCLUSIVELY ON ADULT CARDIAC PATIENT DATA.**
-    *   **IT CANNOT AND MUST NOT BE USED FOR ANY ACTUAL CLINICAL ASSESSMENT OR DECISION-MAKING REGARDING INFANTS.**
-    *   Predictions from this tool are **NOT الطبيا relevant or accurate** for infants and could be dangerously misleading.
-    *   The input fields are designed to *simulate* potential infant parameters for this demonstration, but they are ultimately mapped to the features expected by the adult proxy model.
-    *   The purpose of this dashboard is to showcase the *type* of interface that could be developed if a clinically validated, infant-specific model were available.
     """
 )
 st.markdown("---")
@@ -93,26 +88,24 @@ input_data_for_model['Age'] = fixed_proxy_adult_age
 input_data_for_model['AgeGroup_Age_65-74'] = 1 if (fixed_proxy_adult_age >= 65 and fixed_proxy_adult_age < 75) else 0
 input_data_for_model['AgeGroup_Age_75-84'] = 1 if (fixed_proxy_adult_age >= 75 and fixed_proxy_adult_age < 85) else 0
 input_data_for_model['AgeGroup_Age_85+'] = 1 if (fixed_proxy_adult_age >= 85) else 0
-st.sidebar.markdown(f"_Note: Infant age from UI is illustrative. A fixed proxy adult age of **{fixed_proxy_adult_age} years** is used for the underlying adult model's 'Age' and 'AgeGroup' features in this demo._")
 
 #   Adult-specific lifestyle/history features - set to "low risk" defaults for the proxy model
 input_data_for_model['Alcoholic'] = 0.0
 input_data_for_model['Smoke'] = 0.0
 input_data_for_model['FHCD'] = 0.0 # Assuming no family history for this proxy input
-st.sidebar.markdown("_Proxy adult lifestyle factors (Alcohol, Smoke, FHCD) are set to low-risk defaults for this demo._")
+
 
 
 #   Adult clinical scores - set to "good" defaults for the proxy model
 input_data_for_model['GCS'] = 15.0 # Max GCS
 input_data_for_model['TriageScore'] = 1.0 # Assuming 1 is least severe for proxy model (adjust if scale is different)
-st.sidebar.markdown("_Proxy adult clinical scores (GCS, TriageScore) are set to non-critical defaults for this demo._")
+
 
 
 #   Adult Lab Values & Missingness Indicators for the proxy model:
 #   These are complex as they are not direct infant equivalents for acute risk in this format.
 #   We will set them to "normal adult" values and "not missing" for this conceptual prototype.
-st.sidebar.subheader("Proxy Adult Lab Data (Defaults)")
-st.sidebar.caption("These are for the underlying adult model and set to typical 'normal' & 'not missing' values for this demo.")
+
 default_adult_labs = {'Urea': 20.0, 'Cl': 100.0, 'Na': 140.0, 'K': 4.0, 'Ceratinine': 1.0}
 for lab_col_name in ['Urea', 'Cl', 'Na', 'K', 'Ceratinine']:
     input_data_for_model[lab_col_name] = default_adult_labs[lab_col_name]
@@ -176,6 +169,12 @@ if st.sidebar.button("Predict Infant Risk (Conceptual Prototype)"):
         st.error("Could not proceed with prediction due to missing features in the input construction.")
 
 
-st.sidebar.markdown("---")
-st.sidebar.markdown("IITK Internship Project: Conceptual Prototype")
+
+
+# --- To run this app ---
+# 1. Save this code as app.py
+# 2. Open your terminal/command prompt
+# 3. Navigate to the directory where app.py and your .pkl file are saved
+# 4. Run: streamlit run app.py
+
 
