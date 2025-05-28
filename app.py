@@ -34,7 +34,7 @@ expected_feature_names = [
 ]
 
 # --- Application Title & VERY STRONG DISCLAIMER ---
-st.title("👶❤️ Conceptual Prototype: Early Infant Cardiac Arrest Risk Indicator")
+st.title(" Early Infant Cardiac Arrest Risk predicator")
 st.error( # Using st.error for maximum visibility of the disclaimer
     """
     **⚠️ EXTREMELY IMPORTANT DISCLAIMER & USER AWARENESS ⚠️**
@@ -176,5 +176,3 @@ if st.sidebar.button("Predict Infant Risk (Conceptual Prototype)"):
 # 2. Open your terminal/command prompt
 # 3. Navigate to the directory where app.py and your .pkl file are saved
 # 4. Run: streamlit run app.py
-
-
